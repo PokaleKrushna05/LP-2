@@ -1,0 +1,22 @@
+public class Linear{
+    public static void Demo(Integer key){
+        System.debug('Linear Search');
+        Integer s=-1;
+        List<Integer> li=new List<Integer>();
+        li.add(3);
+        li.add(4);
+        System.debug('List'+li);
+        for(Integer i=0;i<li.size();i++){
+            if(key==li[i]){
+                s=1;
+            }
+        }
+        if(s==1){
+            System.debug('Found');
+        }
+        else{
+            System.debug('Not Found');
+        }
+    }
+}
+

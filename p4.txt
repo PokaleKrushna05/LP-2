@@ -1,0 +1,43 @@
+class NqueenSolver{
+    static int b[][] = new int[4][4];
+    static boolean Check(int r,int c){
+        for(int i=0;i<r;i++){
+            if(b[i][c]==1) return false;
+        }
+        for(int i=r,j=c;i>=0&&j>=0;i--,j--){
+            if(b[i][j]==1) return false;
+        }
+        for(int i=r,j=c;i>=0&&j<4;i--,j++){
+            if(b[i][j]==1) return false;
+        }
+        
+        return true;
+    }
+    static boolean Queen(int r){
+        if(r==4) return true;
+        for(int c=0;c<4;c++){
+            if(Check(r,c)){
+                b[r][c]=1;
+                if(Queen(r+1)) return true;
+                b[r][c]=0;
+            }
+        }
+        return false;
+    }
+    
+    public static void main(String []args){
+        Queen(0);
+        for(int i=0;i<4;i++){
+            for(int j=0;j<4;j++){
+                if(b[i][j]==1){
+                    System.out.print(" "+"Q"+" ");
+                }
+                else{
+                    System.out.print(" "+"_"+" ");
+                }
+            }
+            System.out.println("");
+        }
+    }
+}
+

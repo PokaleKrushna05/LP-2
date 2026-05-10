@@ -1,0 +1,47 @@
+import java.util.*;
+class GraphTraversal{
+    static int graph[][],visited[],n;
+    static void DFS(int node){
+        visited[node]=1;
+        System.out.print(node+" ");
+        for (int i=0;i<n;i++){
+            if(graph[node][i]==1&&visited[i]==0){
+                DFS(i);
+            }
+        }
+    }
+    static void BFS(int start){
+        Queue<Integer>q=new LinkedList<>();
+        int visit[]=new int[n];
+        q.add(start);
+        visit[start]=1;
+        while(!q.isEmpty()){
+            int node=q.poll();
+            System.out.print(node+" ");
+            for (int i=0;i<n;i++){
+                if(graph[node][i]==1&&visit[i]==0){
+                    q.add(i);
+                    visit[i]=1;
+                }
+            }
+        }
+    }
+    public static void main(String []args){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter the no of nodes:");
+        n=sc.nextInt();
+        graph=new int[n][n];
+        visited = new int[n];
+        System.out.println("Enter adjacency Matrix:");
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                graph[i][j]=sc.nextInt();
+            }
+        }
+        System.out.println("DFS");
+        DFS(0);
+        System.out.println("BFS");
+        BFS(0);
+    }
+}
+
